@@ -1,7 +1,10 @@
 *.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+.idea
+demo-web/.idea
+demo-api/target
+demo-api/demo-api.iml
+demo-core/target
+demo-core/demo-core.iml
 
 # Package Files #
 *.jar
@@ -10,3 +13,4 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.DS_Store

@@ -1,0 +1,29 @@
+<nav class="left300pxnavOpen navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <div class="navbar-brand drawer-btn-wrapper"><i class="fa fa-bars" id="drawer-btn"></i></div>
+  </div>
+  <ul class="navbar-nav navbar-right nav">
+    <li><a href="#"><img src="http://lorempixel.com/30/30" class="img-circle"></a></li>
+    <li><a>Jonathan</a></li>
+    <li><a><img src="image/toolbar-ask.png" alt="faq"></a></li>
+    <li><a><img src="image/toolbar-seach.png" alt="search"></a></li>
+    <li><a><img src="image/toolbar-mail.png" alt="mail"></a></li>
+    <li><a><img src="image/toolbar-menu.png" alt="menu"></a></li>
+  </ul>
+</nav>
+<div class="nav-custom width300nav-custom">
+  <ul>
+    <li>
+      <a><img src="image/logo-example.png"><span class="li-span">Admin Dashboard</span></a>
+    </li>
+
+    {{#link-to 'backend.master-provinsi' tagName="li" class="nav-item"}}
+      <a><img src="image/li-item-navbar.png"><span class="li-span">Propinsi</span></a>
+    {{/link-to}}
+
+    {{#link-to 'backend.master-kabupaten' tagName="li" class="nav-item"}}
+      <a><img src="image/li-item-navbar.png"><span class="li-span">Kabupaten</span></a>
+    {{/link-to}}
+
+  </ul>
+</div>

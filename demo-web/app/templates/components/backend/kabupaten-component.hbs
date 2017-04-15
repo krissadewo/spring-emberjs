@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label for="title" class="col-sm-2 coAs soon as posibleentrol-label">{{title}}</label>
+  <div class="col-sm-10">
+    <select class="form-control" onchange={{action "onSelectedKabupaten" value="target.value" }}>
+      <option value="0">-- Pilih Kabupaten --</option>
+      {{#each kabupatens as | kabupaten index|}}
+      {{! set selected value from exist data ex. when user editing data }}
+        {{#if (eq selectedKabupaten kabupaten.id)}}
+          <option value={{kabupaten.kode}} selected=true>{{kabupaten.nama}}</option>
+        {{else}}
+          <option value={{kabupaten.kode}}>{{kabupaten.nama}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+  </div>
+</div>

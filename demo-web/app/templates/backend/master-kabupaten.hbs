@@ -1,0 +1,151 @@
+<div class="left-item-dashboard col-sm-12">
+  <div class="dashboard-left-scroll">
+    {{common/title-page title="Master Kabupaten"}}
+    {{notification-container position="top-right"}}
+    <div class="col-sm-12 form-section-parent">
+      <div class="form-section">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>
+              Kabupaten
+            </h5>
+            <div class="ibox-tools">
+              <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+              </a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-wrench"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#">Config option 1</a>
+                </li>
+                <li><a href="#">Config option 2</a>
+                </li>
+              </ul>
+              <a class="close-link">
+                <i class="fa fa-times"></i>
+              </a>
+            </div>
+          </div>
+          <div class="ibox-content" style="padding: 15px;">
+            <div>
+              <a class="btn btn-success pull-right" data-toggle="modal" href="#modal-save"><i
+                class="fa fa-plus-circle"></i>&nbsp; New</a>
+              <!--<button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Edit</button>-->
+              <!--<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp; Delete</button>-->
+              <br>
+              <br>
+
+              <table class="table">
+                <thead style="border-top: 1px solid #ddd;">
+                <tr>
+                  <th class="th-hover-parent-title">
+                    <span>Kode Kabupaten</span>
+                    <div class="pull-right th-hover-title hidden">
+                      <i class="fa fa-angle-down"></i>
+                    </div>
+                  </th>
+                  <th class="th-hover-parent-title">
+                    <span>Nama Kabupaten</span>
+                    <div class="pull-right th-hover-title hidden">
+                      <i class="fa fa-angle-down"></i>
+                    </div>
+                  </th>
+                  <th class="th-hover-parent-title">
+                    <span>Nama Provinsi</span>
+                    <div class="pull-right th-hover-title hidden">
+                      <i class="fa fa-angle-down"></i>
+                    </div>
+                  </th>
+                  <th class="th-hover-parent-title">
+                    <span>Actions</span>
+                    <div class="pull-right th-hover-title hidden">
+                      <i class="fa fa-angle-down"></i>
+                    </div>
+                  </th>
+                </tr>
+                </thead>
+                <tbody class="table-content">
+                {{#each kabupatens as |kabupaten index|}}
+                  <tr class="table-tr">
+                    <td class="col-sm-2">{{kabupaten.kode}}</td>
+                    <td class="col-sm-4 text-muted">{{kabupaten.nama}}</td>
+                    <td class="col-sm-2">{{kabupaten.provinsi.nama}}</td>
+                    <td class="col-sm-2 td-actions">
+                      <a data-toggle="modal" href="#modal-save" class="btn btn-default" {{action "doEdit" index}}><i
+                        class="fa fa-edit"></i></a>
+                      <a data-toggle="modal" href="#modal-confirmation-delete-{{kabupaten.id}}"
+                         class="btn btn-danger"><i
+                        class="fa fa-times"></i></a>
+                      {{common/modal-confirm text="Hapus data ini, apakah anda yakin ?" action="doDelete" param=kabupaten.id}}
+                    </td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              {{common/pagination-page count=kabupatenCount action="doFind"}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{common/footer-foot}}
+  </div>
+</div>
+
+<div class="modal fade" id="modal-save">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Master Kabupaten</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label for="Judul" class="col-sm-2 control-label">Kode Kabupaten</label>
+            <div class="col-sm-10">
+              {{input type="text" class="form-control" placeholder="Masukkan Kode Kabupaten"
+                      value=textFieldKode}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Judul" class="col-sm-2 control-label">Nama Kabupaten</label>
+            <div class="col-sm-10">
+              {{input type="text" class="form-control" placeholder="Masukkan Nama Kabupaten"
+                      value=textFieldNama}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 coAs soon as posibleentrol-label">Nama Propinsi</label>
+            <div class="col-sm-10">
+              <select class="form-control" onchange={{action "onSelectedProvinsi" value="target.value" }}>
+                <option value="0" selected="true">-- Pilih Provinsi --</option>
+                {{#each provinsis as |provinsi index|}}
+                {{! set selected value from exist data ex. when user editing data }}
+                  {{#if (eq selectedProvinsi provinsi.id)}}
+                    <option value={{provinsi.id}} selected=true>{{provinsi.nama}}</option>
+                  {{else}}
+                    <option value={{provinsi.id}}>{{provinsi.nama}}</option>
+                  {{/if}}
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" {{action "clearField"}}>Cancel</button>
+        <button type="button" class="btn btn-primary" {{action "doSave"}}>Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+

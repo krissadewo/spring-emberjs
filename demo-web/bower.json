@@ -1,0 +1,25 @@
+{
+  "name": "demo-web",
+  "authors": [
+    "MIT"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "1.11.4",
+    "chart.js": "^2.5.0",
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7",
+    "animate.css": "^3.5.2",
+    "simplePagination.js": "*"
+  }
+}
